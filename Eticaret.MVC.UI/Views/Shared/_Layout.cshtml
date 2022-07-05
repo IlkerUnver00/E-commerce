@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- =====  BASIC PAGE NEEDS  ===== -->
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <!-- =====  SEO MATE  ===== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="distribution" content="global">
+    <meta name="revisit-after" content="2 Days">
+    <meta name="robots" content="ALL">
+    <meta name="rating" content="8 YEARS">
+    <meta name="Language" content="en-us">
+    <meta name="GOOGLEBOT" content="NOARCHIVE">
+    <!-- =====  MOBILE SPECIFICATION  ===== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width">
+    <!-- =====  CSS  ===== -->
+    <link rel="stylesheet" type="text/css" href="~/Content/theme/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/theme/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/theme/css/owl.carousel.css">
+    <link rel="shortcut icon" href="~/Content/theme/images/favicon.png">
+    <link rel="apple-touch-icon" href="~/Content/theme/images/apple-touch-icon.html">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Content/theme/images/apple-touch-icon-72x72.html">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Content/theme/images/apple-touch-icon-114x114.html">
+    @RenderSection("page_styles",false)
+</head>
+<body>
+    <div class="loder"></div>
+    <div class="wrapper">
+        @RenderBody()
+        @Html.Partial("~/Views/Shared/footer.cshtml")
+    </div>
+    <a id="scrollup"></a>
+    <script src="~/Content/theme/js/jQuery_v3.1.1.min.js"></script>
+    <script src="~/Content/theme/js/owl.carousel.min.js"></script>
+    <script src="~/Content/theme/js/bootstrap.min.js"></script>
+    <script src="~/Content/theme/js/jquery.magnific-popup.js"></script>
+    <script src="~/Content/theme/js/jquery.firstVisitPopup.js"></script>
+    <script src="~/Content/theme/js/custom.js"></script>
+    <script src="~/Content/custom/basket.js"></script>
+    @RenderSection("page_scripts", false)
+</body>
+</html>

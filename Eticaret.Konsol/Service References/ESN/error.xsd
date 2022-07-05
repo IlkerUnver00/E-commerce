@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Basecore.Model.Enums" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Basecore.Model.Enums" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ResultState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotSet" />
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Info" />
+      <xs:enumeration value="NotFound" />
+      <xs:enumeration value="Forbidden" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResultState" nillable="true" type="tns:ResultState" />
+</xs:schema>

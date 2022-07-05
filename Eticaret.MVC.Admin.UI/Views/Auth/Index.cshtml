@@ -1,0 +1,120 @@
+﻿@model List<Role>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="txtRoleName">Role Name</label>
+                <input class="form-control" type="text" id="txtRoleName" />
+            </div>
+            <div class="form-group">
+                <label for="">Description</label>
+                <textarea class="form-control" id="txtRoleDescription" rows="5" style="width:100%"></textarea>
+            </div>
+            <button id="btnSave" class="btn btn-success btn-block">Save</button>
+        </div>
+        <div class="col-md-12 mt-3">
+            <select id="slcRoles" class=".role-select" name="role" style="width:100%">
+                @foreach (var role in Model)
+                {
+                    if (Model.IndexOf(role) == 0)
+                    {
+                        AuthSessions.SelectedRoleId = role.Id;
+                    }
+                    <option value="@role.Id">@role.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-6 mt-3" id="user-list">
+            @{Html.RenderAction("RenderUserList", "Auth"); }
+        </div>
+        <div class="col-md-6 mt-3" id="module-list">
+            @{Html.RenderAction("RenderModuleList", "Auth"); }
+        </div>
+    </div>
+</div>
+
+@section pagescripts{
+    <script>
+        $(document).ready(function () {
+            $('#slcRoles').select2();
+        });
+
+        $(document).ready(function () {
+            $('#slcUsers').select2();
+        });
+
+        $(document).ready(function () {
+            $('#slcModules').select2();
+        });
+
+        $('#btnSave').click(function () {
+            $.ajax({
+                url: '@Url.Action("AddRole","Auth")',
+                type: 'post',
+                data: { 'rolename': $('#txtRoleName').val(), 'roledesc': $('#txtRoleDescription').val() },
+                success: function (response) {
+                    if (response.status) {
+                        $('#slcRoles').append('<option value="' + response.data.Id + '">' + response.data.Name + '</option>');
+                        $('#slcRoles').select2();
+                    }
+                    else {
+                        console.log(response.message);
+                    }
+                },
+                error: function (err) {
+                    console.log(err.responseText)
+                }
+            });
+        });
+
+
+        $('#slcRoles').change(function () {
+            $('#slcUsers').html('<div class="lds-heart"><div></div></div>');
+            $('#slcModules').html('<div class="lds-heart"><div></div></div>');
+            $.ajax({
+                url: '/Auth/OnRoleChange',
+                type: 'post',
+                data: { 'roleid': $('#slcRoles').val() },
+                success: function (response) {
+                    if (response.status) {
+                        $.ajax({
+                            url: '/Auth/RenderUserList',
+                            type: 'get',
+                            success: function (response) {
+                                $('#user-list').html(response);
+                                $('#slcUsers').select2();
+                            },
+                            error: function (err) {
+                                console.log(err.responseText);
+                            }
+                        });
+
+                        $.ajax({
+                            url: '/Auth/RenderModuleList',
+                            type: 'get',
+                            success: function (response) {
+                                $('#module-list').html(response);
+                                $('#slcModules').select2();
+                            },
+                            error: function (err) {
+                                console.log(err.responseText);
+                            }
+                        });
+
+                    }
+                    else {
+                        console.log(response.message);
+                    }
+                },
+                error: function (err) {
+                    console.log(err.responseText);
+                }
+            })
+        });
+    </script>
+}
+
+

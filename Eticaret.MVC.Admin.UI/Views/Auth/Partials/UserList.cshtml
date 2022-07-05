@@ -1,0 +1,16 @@
+﻿@model List<SelectModel<ApplicationUser>>
+
+
+<select id="slcUsers" class=".user-select" multiple="multiple" style="width:100%">
+    @foreach (var us in Model)
+    {
+        if (us.Selected)
+        {
+            <option value="@us.Model.Id" selected>@us.Model.FullName</option>
+        }
+        else
+        {
+            <option value="@us.Model.Id">@us.Model.FullName</option>
+        }
+    }
+</select>

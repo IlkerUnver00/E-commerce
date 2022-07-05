@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Basecore.Model.ResultTypes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Basecore.Model.ResultTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Basecore.Model.Enums" />
+  <xs:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Domain.POCO" />
+  <xs:complexType name="ServiceResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Basecore.Model.Enums" minOccurs="0" name="State" type="q1:ResultState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceResult" nillable="true" type="tns:ServiceResult" />
+  <xs:complexType name="ServiceResultOfArrayOfErrorDBqOh3ZZ">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ServiceResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Basecore.Model.ResultTypes" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfError" Namespace="http://schemas.datacontract.org/2004/07/Domain.POCO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServiceResult">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Domain.POCO" minOccurs="0" name="Result" nillable="true" type="q2:ArrayOfError" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServiceResultOfArrayOfErrorDBqOh3ZZ" nillable="true" type="tns:ServiceResultOfArrayOfErrorDBqOh3ZZ" />
+  <xs:complexType name="ServiceResultOfErrorDBqOh3ZZ">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ServiceResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Basecore.Model.ResultTypes" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Error" Namespace="http://schemas.datacontract.org/2004/07/Domain.POCO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServiceResult">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Domain.POCO" minOccurs="0" name="Result" nillable="true" type="q3:Error" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServiceResultOfErrorDBqOh3ZZ" nillable="true" type="tns:ServiceResultOfErrorDBqOh3ZZ" />
+</xs:schema>

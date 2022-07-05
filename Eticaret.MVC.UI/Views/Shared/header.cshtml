@@ -1,0 +1,185 @@
+﻿<header id="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="header-top-left">
+                        <div class="contact"><a href="#">Call now !</a> <span class="hidden-xs hidden-sm hidden-md">+91 987-654-321</span></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <ul class="header-top-right text-right">
+                        @if (UserSessions.CurrentUser == null)
+                        {
+                            <li class="account"><a href="/login">Login</a></li>
+                        }
+                        else
+                        {
+                            <li class="account"><a href="/profile">My Account</a></li>
+                            <li class="account"><a href='@Url.Action("SignOut", "Account")'>Sign Out</a></li>
+                        }
+                        <li class="language dropdown">
+                            <span class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Language <span class="caret"></span> </span>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">French</a></li>
+                                <li><a href="#">German</a></li>
+                            </ul>
+                        </li>
+                        <li class="currency dropdown">
+                            <span class="dropdown-toggle" id="dropdownMenu12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Currency <span class="caret"></span> </span>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu12">
+                                <li><a href="#">€ Euro</a></li>
+                                <li><a href="#">£ Pound Sterling</a></li>
+                                <li><a href="#">$ US Dollar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="main-search mt_40">
+                        <input id="search-input" name="search" value="" placeholder="Search" class="form-control input-lg" autocomplete="off" type="text">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" href="index.html"> <img alt="OYEENok" src="images/logo.png"> </a> </div>
+                <div class="col-xs-6 col-sm-4 shopcart">
+                    <div id="cart" class="btn-group btn-block mtb_40">
+                        <button type="button" onclick="LoadBasket()" class="btn" data-target="#cart-dropdown" data-toggle="collapse" aria-expanded="true"><span id="shippingcart">Shopping cart</span><span id="cart-total">items (0)</span> </button>
+                    </div>
+
+
+                    <div id="cart-dropdown" class="cart-menu collapse">
+                        <ul>
+
+                            @{Html.RenderAction("LoadCart", "Home");}
+                            <li>
+                                <div id="cart-container">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-right"><strong>Sub-Total</strong></td>
+                                                <td class="text-right">$2,100.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
+                                                <td class="text-right">$2.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right"><strong>VAT (20%)</strong></td>
+                                                <td class="text-right">$20.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right"><strong>Total</strong></td>
+                                                <td class="text-right">$2,122.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </li>
+                            <li>
+                                <form action="http://html.lionode.com/queenok/cart_page.html">
+                                    <input class="btn pull-left mt_10" value="View cart" type="submit">
+                                </form>
+                                <form action="http://html.lionode.com/queenok/checkout_page.html">
+                                    <input class="btn pull-right mt_10" value="Checkout" type="submit">
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar">
+                <p>Menu</p>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="i-bar"><i class="fa fa-bars"></i></span></button>
+                <div class="collapse navbar-collapse js-navbar-collapse">
+                    <ul id="menu" class="nav navbar-nav">
+                        <li> <a href="index.html">Home</a></li>
+                        <li> <a href="category_page.html">women</a></li>
+                        <li> <a href="category_page.html">men</a></li>
+                        <li class="dropdown mega-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collection </a>
+                            <ul class="dropdown-menu mega-dropdown-menu row">
+                                <li class="col-md-3">
+                                    <ul>
+                                        <li class="dropdown-header">Women's</li>
+                                        <li><a href="#">Unique Features</a></li>
+                                        <li><a href="#">Image Responsive</a></li>
+                                        <li><a href="#">Auto Carousel</a></li>
+                                        <li><a href="#">Newsletter Form</a></li>
+                                        <li><a href="#">Four columns</a></li>
+                                        <li><a href="#">Four columns</a></li>
+                                        <li><a href="#">Good Typography</a></li>
+                                    </ul>
+                                </li>
+                                <li class="col-md-3">
+                                    <ul>
+                                        <li class="dropdown-header">Man's</li>
+                                        <li><a href="#">Unique Features</a></li>
+                                        <li><a href="#">Image Responsive</a></li>
+                                        <li><a href="#">Four columns</a></li>
+                                        <li><a href="#">Auto Carousel</a></li>
+                                        <li><a href="#">Newsletter Form</a></li>
+                                        <li><a href="#">Four columns</a></li>
+                                        <li><a href="#">Good Typography</a></li>
+                                    </ul>
+                                </li>
+                                <li class="col-md-3">
+                                    <ul>
+                                        <li class="dropdown-header">Children's</li>
+                                        <li><a href="#">Unique Features</a></li>
+                                        <li><a href="#">Four columns</a></li>
+                                        <li><a href="#">Image Responsive</a></li>
+                                        <li><a href="#">Auto Carousel</a></li>
+                                        <li><a href="#">Newsletter Form</a></li>
+                                        <li><a href="#">Four columns</a></li>
+                                        <li><a href="#">Good Typography</a></li>
+                                    </ul>
+                                </li>
+                                <li class="col-md-3">
+                                    <ul>
+                                        <li id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="item active"> <a href="#"><img src="images/menu-banner1.jpg" class="img-responsive" alt="Banner1"></a></div>
+                                                <!-- End Item -->
+                                                <div class="item"> <a href="#"><img src="images/menu-banner2.jpg" class="img-responsive" alt="Banner1"></a></div>
+                                                <!-- End Item -->
+                                                <div class="item"> <a href="#"><img src="images/menu-banner3.jpg" class="img-responsive" alt="Banner1"></a></div>
+                                                <!-- End Item -->
+                                            </div>
+                                            <!-- End Carousel Inner -->
+                                        </li>
+                                        <!-- /.carousel -->
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li> <a href="blog_page.html">Blog</a></li>
+                        <li> <a href="about.html">About us</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
+                            <ul class="dropdown-menu">
+                                <li> <a href="contact_us.html">Contact us</a></li>
+                                <li> <a href="cart_page.html">Cart</a></li>
+                                <li> <a href="checkout_page.html">Checkout</a></li>
+                                <li> <a href="product_detail_page.html">Product Detail Page</a></li>
+                                <li> <a href="single_blog.html">Single Post</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.nav-collapse -->
+            </nav>
+        </div>
+    </div>
+</header>

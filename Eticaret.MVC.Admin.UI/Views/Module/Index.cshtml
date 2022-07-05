@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Module>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="txtModuleName">Module Name</label>
+                <input class="form-control" type="text" id="txtModuleName" />
+            </div>
+            <div class="form-group">
+                <label for="txtModuleDescription">Description</label>
+                <textarea class="form-control" id="txtModuleDescription" rows="5" style="width:100%"></textarea>
+            </div>
+            <button id="btnSave" class="btn btn-success btn-block">Save</button>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <table class="display" id="modules-table">
+            <thead>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section pagescripts{
+    <script>
+        $(document).ready(function () {
+            var table = $('#modules-table').dataTable({
+                responsive: true
+            });
+
+            $('#btnSave').click(function () {
+                $.ajax({
+                    url: '@Url.Action("AddModule","Module")',
+                    type: 'post',
+                    data: { 'modName': $('#txtModuleName').val(), 'modDesc': $('#txtModuleDescription').val() },
+                    success: function (response) {
+                        if (response.status) {
+                            var table = $('#modules-table').dataTable({
+                                responsive: true,
+                                destroy: true
+                            });
+                            table.row.add([
+                         response.data.Name,
+                        response.data.Description
+                            ]).draw(false);
+
+                        }
+                        else {
+                            console.log(response.message);
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err.responseText)
+                    }
+
+                });
+            })
+        });
+
+
+    </script>
+
+}

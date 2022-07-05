@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Domain.POCO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Domain.POCO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Domain.Constants" />
+  <xs:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Basecore.Model" />
+  <xs:complexType name="Error">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseServiceModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Action" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Controller" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Domain.Constants" minOccurs="0" name="Type" type="q1:ErrorType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Error" nillable="true" type="tns:Error" />
+  <xs:complexType name="BaseServiceModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Basecore.Model" base="q2:BaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="App" nillable="true" type="tns:App" />
+          <xs:element minOccurs="0" name="AppId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BaseServiceModel" nillable="true" type="tns:BaseServiceModel" />
+  <xs:complexType name="App">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Basecore.Model" base="q3:BaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Errors" nillable="true" type="tns:ArrayOfError" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TodoList" nillable="true" type="tns:ArrayOfToDo" />
+          <xs:element minOccurs="0" name="Updates" nillable="true" type="tns:ArrayOfUpdate" />
+          <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="App" nillable="true" type="tns:App" />
+  <xs:complexType name="ArrayOfError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Error" nillable="true" type="tns:Error" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfError" nillable="true" type="tns:ArrayOfError" />
+  <xs:complexType name="ArrayOfToDo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ToDo" nillable="true" type="tns:ToDo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfToDo" nillable="true" type="tns:ArrayOfToDo" />
+  <xs:complexType name="ToDo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseServiceModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DueDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Header" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HoursTaken" type="xs:int" />
+          <xs:element minOccurs="0" name="IsCompleted" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ToDo" nillable="true" type="tns:ToDo" />
+  <xs:complexType name="ArrayOfUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Update" nillable="true" type="tns:Update" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUpdate" nillable="true" type="tns:ArrayOfUpdate" />
+  <xs:complexType name="Update">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseServiceModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrentVersion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TargetVersion" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Update" nillable="true" type="tns:Update" />
+</xs:schema>

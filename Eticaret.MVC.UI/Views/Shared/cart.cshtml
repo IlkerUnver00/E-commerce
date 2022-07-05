@@ -1,0 +1,18 @@
+﻿@model List<Product>
+<li>
+    <table class="table table-striped">
+        <tbody>
+            @foreach (var item in Model.GroupBy(x=>x.Id))
+            {
+                <tr>
+                    <td class="text-center"><a href="#"><img src='@item.First().Image' alt="iPod Classic" title="iPod Classic"></a></td>
+                    <td class="text-left product-name">
+                        <a href="#">@item.First().Name</a> <span class="text-left price">$20.00</span>
+                        <input class="cart-qty" name="product_quantity" min="1" value='@item.Count()' type="number">
+                    </td>
+                    <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</li>

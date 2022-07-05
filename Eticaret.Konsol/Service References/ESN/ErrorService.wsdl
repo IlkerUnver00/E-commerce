@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ErrorService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Domain.POCO" />
+      <xsd:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Basecore.Model" />
+      <xsd:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Domain.Constants" />
+      <xsd:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Basecore.Model.ResultTypes" />
+      <xsd:import schemaLocation="http://mehmetaliarican.site/error.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Basecore.Model.Enums" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IErrorService_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:Insert" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_DeleteMarked_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMarked" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_DeleteMarked_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMarkedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_GetList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetList" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_GetList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_Get_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_Get_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_SelectByQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectByQuery" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_SelectByQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectByQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_SelectByQuantity_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectByQuantity" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_SelectByQuantity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectByQuantityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_GetLastThreeDays_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastThreeDays" />
+  </wsdl:message>
+  <wsdl:message name="IErrorService_GetLastThreeDays_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastThreeDaysResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IErrorService">
+    <wsdl:operation name="Insert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/Insert" message="tns:IErrorService_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/InsertResponse" message="tns:IErrorService_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/Update" message="tns:IErrorService_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/UpdateResponse" message="tns:IErrorService_Update_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/Delete" message="tns:IErrorService_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/DeleteResponse" message="tns:IErrorService_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMarked">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/DeleteMarked" message="tns:IErrorService_DeleteMarked_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/DeleteMarkedResponse" message="tns:IErrorService_DeleteMarked_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/GetList" message="tns:IErrorService_GetList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/GetListResponse" message="tns:IErrorService_GetList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/Get" message="tns:IErrorService_Get_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/GetResponse" message="tns:IErrorService_Get_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectByQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/SelectByQuery" message="tns:IErrorService_SelectByQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/SelectByQueryResponse" message="tns:IErrorService_SelectByQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectByQuantity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/SelectByQuantity" message="tns:IErrorService_SelectByQuantity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseServiceOf_Error/SelectByQuantityResponse" message="tns:IErrorService_SelectByQuantity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastThreeDays">
+      <wsdl:input wsaw:Action="http://tempuri.org/IErrorService/GetLastThreeDays" message="tns:IErrorService_GetLastThreeDays_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IErrorService/GetLastThreeDaysResponse" message="tns:IErrorService_GetLastThreeDays_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IErrorService" type="tns:IErrorService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Insert">
+      <soap:operation soapAction="http://tempuri.org/IBaseServiceOf_Error/Insert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/IBaseServiceOf_Error/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IBaseServiceOf_Error/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMarked">
+      <soap:operation soapAction="http://tempuri.org/IBaseServiceOf_Error/DeleteMarked" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetList">
+      <soap:operation soapAction="http://tempuri.org/IBaseServiceOf_Error/GetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get">
+      <soap:operation soapAction="http://tempuri.org/IBaseServiceOf_Error/Get" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectByQuery">
+      <soap:operation soapAction="http://tempuri.org/IBaseServiceOf_Error/SelectByQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectByQuantity">
+      <soap:operation soapAction="http://tempuri.org/IBaseServiceOf_Error/SelectByQuantity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastThreeDays">
+      <soap:operation soapAction="http://tempuri.org/IErrorService/GetLastThreeDays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ErrorService">
+    <wsdl:port name="BasicHttpBinding_IErrorService" binding="tns:BasicHttpBinding_IErrorService">
+      <soap:address location="http://mehmetaliarican.site/error.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
